@@ -44,4 +44,4 @@ def download(file):
             file_pos += 1
             tab_pos += 1
 
-    return tab
+    return tab, coord[0], coord[1]
