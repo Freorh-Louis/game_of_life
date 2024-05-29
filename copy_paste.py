@@ -13,12 +13,12 @@ class Copy_paste:
             file = widget_txt[0]
             x = int(widget_txt[1])
             y = int(widget_txt[2])
-            pattern, width, heigth = download(file)
+            pattern, width, height = download(file)
             current_grid = self.__grid.get_grid()
-            if x + width > 110 and y + heigth > 90:
+            if x + width > 110 and y + height > 90:
                 print('Pattern does not fit in the screen')
             else:
-                for i in range(heigth):
+                for i in range(height):
                     for j in range(width):
                         if pattern[i][j]:
                             if not current_grid[i + x][j + y]:

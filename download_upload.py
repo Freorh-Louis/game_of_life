@@ -45,3 +45,49 @@ def download(file):
             tab_pos += 1
 
     return tab, coord[0], coord[1]
+
+
+def upload(pattern, height, width, file_name):
+    pattern_str = ""
+    for i in range(height):
+        cpt = 0
+        for j in range(width):
+            if pattern[i][j]:
+                cpt += 1
+                if j < width-1 and pattern[i][j+1]:
+                    continue
+                else:
+                    if cpt == 1:
+                        pattern_str += "o"
+                    else:
+                        pattern_str += str(cpt) + "o"
+                    cpt = 0
+            else:
+                cpt += 1
+                if j < width-1 and not pattern[i][j+1]:
+                    continue
+                else:
+                    if cpt == 1:
+                        pattern_str += "b"
+                    else:
+                        pattern_str += str(cpt) + "b"
+                    cpt = 0
+        pattern_str += "$"
+    
+    pattern_str = pattern_str[:-1]
+    pattern_str += "!"
+    str_list = []
+    if len(pattern_str) > 70:
+        str_list  = [pattern_str[:70*(i+1)] for i in range(int(len(pattern_str)/70) + 1)]
+    print(str_list)
+
+    text = f"# {file_name}\n# Louis VINCENT\nx = {width}, y = {height}, rule = B3/S23\n" + pattern_str
+    print(text)
+
+    """ file = open(file_name + ".rle.txt", "x")
+    file.write(text)
+    file.close() """
+
+
+pattern, width, height = download("gosperglidergun.rle.txt")
+upload(pattern, height, width, "test")
