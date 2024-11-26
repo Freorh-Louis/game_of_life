@@ -1,4 +1,5 @@
 Author : VINCENT Louis
+
 An implementation of John Conway's game of life. Quick project I made for fun on my personal time.
 
 This code simulte the game of life with python's import tkinter.
